@@ -1,8 +1,12 @@
-import { forwardRef, useState, useRef, useEffect } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import { data as emojiList } from "./data";
-import EmojiButtom from "./EmojiButtom";
+import EmojiButton from "./EmojiButtom";
+
+import styles from "./emojiPicker.module.scss";
 import EmojiSearch from "./EmojiSearch";
-export function EmojiPicker(props, inputRef) {
+import EmojiList from "./EmojiList";
+
+export default forwardRef((props, inputRef) => {
   const [isOpen, setIsOpen] = useState(false);
   const [emojis, setEmojis] = useState([...emojiList]);
 
@@ -12,44 +16,16 @@ export function EmojiPicker(props, inputRef) {
     window.addEventListener("click", (e) => {
       if (!containerRef.current.contains(e.target)) {
         setIsOpen(false);
-        //En esta linea de abajo no realiza copia en el video
-        setEmojis(...emojiList);
+        setEmojis([...emojiList]);
       }
     });
   }, []);
 
-  function handleClickOpen() {
+  function handleClick() {
     setIsOpen(!isOpen);
   }
-  function handleSearch(e) {
-    const q = e;
 
-    if (!!q) {
-      const search = emojiList.filter((emoji) => {
-        return (
-          emoji.name.toLowerCase().includes(q) ||
-          emoji.keywords.toLowerCase().includes(q)
-        );
-      });
-      setEmojis(search);
-    } else {
-      setEmojis(emojiList);
-    }
-  }
-
-  /*   function EmojiPickerContainer() {
-    return (
-      <div>
-        <EmojiSearch onSearch={handleSearch}></EmojiSearch>
-        <div>
-          {emojiList.map((emoji) => (
-            <div key={emoji.symbol}>{emoji.symbol}</div>
-          ))}
-        </div>
-      </div>
-    );
-  }  */
-  function handleClickEmoji(emoji) {
+  function handleEmojiClick(emoji) {
     const cursorPos = inputRef.current.selectionStart;
     const text = inputRef.current.value;
     const prev = text.slice(0, cursorPos);
@@ -60,26 +36,45 @@ export function EmojiPicker(props, inputRef) {
     inputRef.current.selectionEnd = cursorPos + emoji.symbol.length;
     inputRef.current.focus();
   }
+
+  function handleSearch(e) {
+    const q = e.target.value;
+
+    if (!!q) {
+      const search = emojiList.filter((emoji) => {
+        return (
+          emoji.name.toLowerCase().includes(q) ||
+          emoji.keywords.toLowerCase().includes(q)
+        );
+      });
+
+      setEmojis([...search]);
+    } else {
+      setEmojis([...emojiList]);
+    }
+  }
+
   return (
-    <div ref={containerRef}>
-      <button onClick={handleClickOpen}>😊</button>
+    <div ref={containerRef} style={{ position: "relative", display: "inline" }}>
+      <button className={styles.emojiPickerButton} onClick={handleClick}>
+        😊
+      </button>
       {isOpen ? (
-        <div>
-          <EmojiSearch onSearch={handleSearch}></EmojiSearch>
-          <div>
+        <div className={styles.emojiPickerContainer}>
+          <EmojiSearch onSearch={handleSearch} />
+          <EmojiList>
             {emojis.map((emoji) => (
-              <EmojiButtom
+              <EmojiButton
                 key={emoji.symbol}
                 emoji={emoji}
-                onClick={handleClickEmoji}
-              ></EmojiButtom>
+                onClick={handleEmojiClick}
+              />
             ))}
-          </div>
+          </EmojiList>
         </div>
       ) : (
         ""
       )}
     </div>
   );
-}
-export default forwardRef(EmojiPicker);
+});

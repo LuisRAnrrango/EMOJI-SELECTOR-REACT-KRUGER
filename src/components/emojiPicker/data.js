@@ -23,8 +23,8 @@ export const data = [
     symbol: "🤯",
     name: "cabeza explotada",
     keywords: "head exploding mind blowing",
-  }
-  /* {
+  },
+  {
     symbol: "👍",
     name: "me gusta",
     keywords: "like pulgar arriba",
@@ -53,5 +53,5 @@ export const data = [
     symbol: "👀",
     name: "ojos",
     keywords: "eyes vista mirada",
-  }, */
+  },
 ];

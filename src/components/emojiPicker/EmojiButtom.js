@@ -1,8 +1,13 @@
-import React from "react";
+import styles from "./emojiPicker.module.scss";
 
-export default function EmojiButtom({ emoji, onClick }) {
-  function handleClick() {
+export default function EmojiButton({ emoji, onClick }) {
+  function handleOnClick() {
     onClick(emoji);
   }
-  return <button onClick={handleClick}>{emoji.symbol}</button>;
+
+  return (
+    <button onClick={handleOnClick} className={styles.emojiButton}>
+      {emoji.symbol}
+    </button>
+  );
 }
