@@ -7,8 +7,8 @@ export default function EmojiPickerInput() {
   const inputRef = useRef(null);
   return (
     <div className={styles.inputContainer}>
-      <input ref={inputRef} />
       <EmojiPicker ref={inputRef} />
+      <input ref={inputRef} />
     </div>
   );
 }
