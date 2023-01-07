@@ -1,9 +1,12 @@
 import "./App.css";
+import EmojiPickerInput from "./components/emojiPicker/EmojiPickerInput";
 
 function App() {
-  return <div className="App">
-    
-  </div>;
+  return (
+    <div>
+     <EmojiPickerInput></EmojiPickerInput>
+    </div>
+  );
 }
 
 export default App;
