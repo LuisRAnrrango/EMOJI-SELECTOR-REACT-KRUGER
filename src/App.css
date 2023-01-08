@@ -17,3 +17,12 @@
 .enviar {
   transform: rotate(90deg);
 }
+.tarjeta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+/* .cajaMensaje {
+  width: 215px;
+} */

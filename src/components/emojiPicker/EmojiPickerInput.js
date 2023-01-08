@@ -1,7 +1,5 @@
 import { useRef, useState } from "react";
 import EmojiPicker from "./EmojiPicker";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./emojiPicker.module.scss";
 
@@ -9,18 +7,15 @@ export default function EmojiPickerInput() {
   const inputRef = useRef(null);
   //Creando los Estados para acumular mensajes y para enviar
   const [mensaje, setMensaje] = useState("");
-  const [mensajes, setMensajes] = useState([]);
+  //const [mensajes, setMensajes] = useState([]);
 
   //obtener data de caja de texto
   function handleChange(e) {
     const q = e.target.value;
     setMensaje(q);
-
-
-    console.log(mensaje);
   }
   function handleClick() {
-   /*  const newMensaje={
+    /*  const newMensaje={
       id:crypto.randomUUID(),
       mensaje:mensaje,
       completed:false
@@ -30,14 +25,19 @@ export default function EmojiPickerInput() {
     setMensaje(
       `https://api.whatsapp.com/send?phone=593993273984&text=${mensaje}`
     );
-    console.log(mensaje);
   }
 
   return (
     <div className={styles.inputContainer}>
       <EmojiPicker ref={inputRef} />
-      <input ref={inputRef} onChange={handleChange} />
-
+      <input
+        type="text"
+        className="cajaMensaje form-control form-control-lg"
+        placeholder="Escribe aquí"
+        ref={inputRef}
+        onChange={handleChange}
+      />
+      <br />
       <a href={mensaje} target="_blank">
         <button
           type="button"
@@ -47,7 +47,7 @@ export default function EmojiPickerInput() {
           Enviar
         </button>
       </a>
-     {/*  <div className="mensajeContainer">
+      {/*  <div className="mensajeContainer">
         {mensajes.map(item=>(
           <div>{item.mensaje}</div>
         ))}
