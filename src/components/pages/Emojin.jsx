@@ -9,10 +9,9 @@ export const Emojin = () => {
         <div class="card">
           <h5 class="card-header">Chat GraiBook</h5>
           <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
+            <h5 class="card-title">Conversa con Nosotros</h5>
             <p class="card-text">
-              With supporting text below as a natural lead-in to additional
-              content.
+              Mediante este cuadro de Dialogo puedes enviar un mensaje Directo al WhatsApp de GranRest Tecnolgy.
             </p>
             <EmojiPickerInput></EmojiPickerInput>
 

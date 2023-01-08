@@ -15,30 +15,43 @@ export default function EmojiPickerInput() {
   function handleChange(e) {
     const q = e.target.value;
     setMensaje(q);
+
+
     console.log(mensaje);
   }
-function handleClick(){
-  setMensaje(`https://api.whatsapp.com/send?phone=593993273984&text=${mensaje}`)
-  console.log(mensaje);
-}
+  function handleClick() {
+   /*  const newMensaje={
+      id:crypto.randomUUID(),
+      mensaje:mensaje,
+      completed:false
+    }
+    //Inserto a mi estado de []
+    setMensajes(...mensajes,newMensaje); */
+    setMensaje(
+      `https://api.whatsapp.com/send?phone=593993273984&text=${mensaje}`
+    );
+    console.log(mensaje);
+  }
 
   return (
     <div className={styles.inputContainer}>
       <EmojiPicker ref={inputRef} />
       <input ref={inputRef} onChange={handleChange} />
 
-      <div className="App" style={{ fontSize: "20px", color: "blue" }}>
-        <FontAwesomeIcon icon={faBell} />
-      </div>
-      <a
-        href={mensaje}
-        target="_blank"
-      >
-        <button type="button" onClick={handleClick} className="w-100 btn btn-lg btn-primary">
+      <a href={mensaje} target="_blank">
+        <button
+          type="button"
+          onClick={handleClick}
+          className="w-100 btn btn-lg btn-primary"
+        >
           Enviar
         </button>
       </a>
-
+     {/*  <div className="mensajeContainer">
+        {mensajes.map(item=>(
+          <div>{item.mensaje}</div>
+        ))}
+      </div> */}
     </div>
   );
 }
