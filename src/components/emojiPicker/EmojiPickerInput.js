@@ -38,7 +38,7 @@ export default function EmojiPickerInput() {
         onChange={handleChange}
       />
       <br />
-      <a href={mensaje} target="_blank">
+      <a href={mensaje} target="_blank" rel="noopener noreferrer">
         <button
           type="button"
           onClick={handleClick}
