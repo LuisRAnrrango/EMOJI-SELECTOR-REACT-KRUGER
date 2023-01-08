@@ -8,6 +8,7 @@ import { About } from "./components/pages/About";
 import { Contact } from "./components/pages/Contact";
 import { Navbar } from "./components/Navbar";
 
+
 function App() {
   return (
     <BrowserRouter>

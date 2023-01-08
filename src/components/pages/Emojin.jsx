@@ -1,3 +1,4 @@
+
 import React from "react";
 import EmojiPickerInput from "../emojiPicker/EmojiPickerInput";
 
@@ -14,9 +15,9 @@ export const Emojin = () => {
               content.
             </p>
             <EmojiPickerInput></EmojiPickerInput>
-            <a href="#" class="btn btn-primary">
-              Go somewhere
-            </a>
+
+           {/*  <i className="bi bi-send"></i> */}
+           
           </div>
         </div>
       </div>
