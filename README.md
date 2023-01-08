@@ -1,4 +1,3 @@
-
 # EMOJI-SELECTOR- LRAC
 
 <img src='public\images\kruger.png' width='100'>
@@ -41,7 +40,7 @@ Use the following steps to run this Portfolio locally:
 
 For a live demo please click on the following link:
 
-https:jjLink
+https://63bb285134bf0957f1b08874--starlit-malasada-bbea2b.netlify.app/
 
 ## Author
 
